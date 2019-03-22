@@ -11,7 +11,6 @@ import {HeroService} from '../hero.service';
 export class HeroesComponent implements OnInit {
 
 
-  // heroes = HEROES; // hero实例集
   heroes: Hero[];  // 声明一个空的  Hero实例集合
 
 
@@ -29,6 +28,7 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
+
 }
 
 
