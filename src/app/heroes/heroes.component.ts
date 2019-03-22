@@ -11,16 +11,9 @@ import {HeroService} from '../hero.service';
 export class HeroesComponent implements OnInit {
 
 
-  // hero: Hero = {
-  //   id: 1,  // 写入id
-  //   name: 'Windstorm', // 写入name
-  // };
-
-
   // heroes = HEROES; // hero实例集
   heroes: Hero[];  // 声明一个空的  Hero实例集合
 
-  selectedHero: Hero; // 用来存储选中的 hero 实例
 
   // 构造传入从 HeroService 实例，作为单利类存储数据的类
   constructor(private heroService: HeroService) {
@@ -31,18 +24,10 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
 
-  // 从Model 层 获取数据
-  // getHeroes(): void {
-  //   this.heroes = this.heroService.getHeroes();
-  // }
   getHeroes(): void {
-    // this.heroService.getHeroes()
-    //   .subscribe(heroes => this.heroes = heroes);
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
   }
 }
 
