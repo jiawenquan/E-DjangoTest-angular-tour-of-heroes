@@ -29,6 +29,25 @@ export class HeroesComponent implements OnInit {
       .subscribe(heroes => this.heroes = heroes);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) {
+      return;
+    }
+    // 当给定名称为非空白时，处理程序Hero从名称创建一个类似对象（它只缺少它id）并将其传递给services addHero()方法。
+    this.heroService.addHero({name} as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+    // 当addHero成功保存，该subscribe回调接收新的英雄和它推入到heroes列表中显示。
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    // this.heroService.deleteHero(hero);
+    this.heroService.deleteHero(hero).subscribe();
+  }
+
 }
 
 

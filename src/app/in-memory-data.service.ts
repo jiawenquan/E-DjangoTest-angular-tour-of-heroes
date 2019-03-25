@@ -8,6 +8,8 @@ import {Injectable} from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
+
+    // 这里模拟服务器的数据
     const heroes = [
       {id: 11, name: 'Mr. Nice'},
       {id: 12, name: 'Narco'},
@@ -29,6 +31,11 @@ export class InMemoryDataService implements InMemoryDbService {
   // the method below returns the initial number (11).
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
+  //  覆盖genId方法，以确保英雄始终具有id。
+  //  如果heroes数组是空的，
+  //  下面的方法返回初始值(11)。
+  //  如果  heroes数组不是空的，下面的方法返回最高的值
+  //  英雄id + 1。
   genId(heroes: Hero[]): number {
     return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
   }

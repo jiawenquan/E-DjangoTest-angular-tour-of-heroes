@@ -33,8 +33,12 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
+  // 用来保存修改的的数据
   save(): void {
-    this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+    // 调用updateHero 方法 更新 hero数据
+    this.heroService.updateHero(this.hero).subscribe(
+      () => this.goBack()
+    );
+    // 更新数据完毕 调用 goBack 方法
   }
 }
